@@ -1,0 +1,47 @@
+﻿@model Model.Student
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h3>&nbsp; Edit student:</h3>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="StudentId" />
+                <div class="form-group">
+                    <label asp-for="First_Name" class="control-label">First name:</label>
+                    <input asp-for="First_Name" class="form-control" />
+                    <span asp-validation-for="First_Name" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Last_Name" class="control-label">Last name:</label>
+                    <input asp-for="Last_Name" class="form-control" />
+                    <span asp-validation-for="Last_Name" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="GroupId" class="control-label">Group:</label>
+                    <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupName"></select>
+                    <span asp-validation-for="GroupId" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success w-25" />
+                    <a asp-action="Index" class="btn btn-danger w-25">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
